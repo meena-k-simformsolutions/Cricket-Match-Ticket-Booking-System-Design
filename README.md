@@ -38,7 +38,7 @@ Assuming an average of **2 requests per user per second**, the system should be 
 To avoid multiple users booking the same seat, a timeout-based blocking mechanism temporarily reserves contested seats for a defined period (e.g., 10 minutes). The first user to initiate the reservation is prioritized. If payment is not confirmed within the allocated time, the seats are released for other users. This method is implemented using a Redis-based approach with a defined TTL.
 
 ## Diagram
-![Diagram](https://i.postimg.cc/wMqS8vdB/Untitled-Diagram-jpg-drawio.png)
+![Diagram](https://i.postimg.cc/fRgBgsq9/Diagram.png)
 
 ## System Components
 
