@@ -10,7 +10,7 @@ This system facilitates advanced ticket bookings for cricket matches, ensuring a
 - B2C users can explore upcoming matches and filter by date, team, and venue.
 - Allows B2C end users to book, view and cancel bookings.
 - Third party payment integrations (Support for payment methods credit/debit cards).
-- SMS and email notifications.
+- SMS and Email notifications.
 - Atomic transactions to ensure that only one customer can reserve a specific seat for a match.
 
 ### Non-Functional Requirements
@@ -50,7 +50,7 @@ Each element plays a vital role in ensuring a seamless user experience, particul
 
 **App Servers:** We have a horizontally scaled distributed network of app servers running different containerized microservices within them to handle a lot of requests in parallel. It ensures smooth running of the business.
 
-**Database:** Since the booking process is quite essentially a transactional one, we need to enforce strict ACID compliance. Additionally, we need to store many other relational information about operators, theatres, halls, seats, etc.To achieve both goals, we have used PostgreSQL in this exercise. We can configure partitions based on regions if the user base grows. Consistent hashing would be best approach here. Replication can be similar to Redis. Go with master-master-slave architecture where slaves can be used for reading as read nodes and master can be used for writes. That way, we can easily scale RDBMS as well.
+**Database:** Since the booking process is quite essentially a transactional one, we need to enforce strict ACID compliance. Additionally, we need to store many other relational information about operators, stadiums, seats, etc.To achieve both goals, we have used PostgreSQL in this exercise. We can configure partitions based on regions if the user base grows. Consistent hashing can be used for achieve data sharding. Replication can be similar to Redis. Go with master-master-slave architecture where slaves can be used for reading as read nodes and master can be used for writes. That way, we can easily scale RDBMS as well.
 
 We have tons of data like show-related info, such as reviews, and these cannot be saved in RDBMS because this can be considered big data or too much data for RDBMS to digest. So, it can actually use any kind of NoSQL DB where we are distributed by geo, like Cassandra, which is good at holding this type of big data. It is distributed across geo, and we can set the replication factor to specify how many copies of the same data can be saved and also the consistency level. That way, you can always be sure that we won't lose data and maintain 99.99% availability and durability (so if two nodes go down, we still have the data in other nodes).
 
