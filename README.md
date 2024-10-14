@@ -15,7 +15,7 @@ This system facilitates advanced ticket bookings for cricket matches, ensuring a
 
 ### Non-Functional Requirements
 
-- The system must support between 5Lac and 1 million concurrent users.
+- The system must support between 5Lac to 1 million concurrent users.
 - It should be highly scalable, available, reliable, consistent, and fault-tolerant.
 - User data must be encrypted during both transmission and storage.
 - Secure authentication protocols must be implemented (e.g., OAuth, JWT).
@@ -38,7 +38,7 @@ Assuming an average of **2 requests per user per second**, the system should be 
 To avoid multiple users booking the same seat, a timeout-based blocking mechanism temporarily reserves contested seats for a defined period (e.g., 10 minutes). The first user to initiate the reservation is prioritized. If payment is not confirmed within the allocated time, the seats are released for other users. This method is implemented using a Redis-based approach with a defined TTL.
 
 ## Diagram
-![Diagram](https://i.postimg.cc/fRgBgsq9/Diagram.png)
+![Diagram](https://iili.io/2HyIMxt.png)
 
 ## System Components
 
